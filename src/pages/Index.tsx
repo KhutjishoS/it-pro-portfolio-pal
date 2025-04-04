@@ -35,21 +35,21 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Header />
       
       <main>
         <Hero />
         
-        <div className="reveal">
+        <div className="reveal" data-animation="slide-right">
           <About />
         </div>
         
-        <div className="reveal">
+        <div className="reveal" data-animation="slide-left">
           <Projects />
         </div>
         
-        <div className="reveal">
+        <div className="reveal" data-animation="zoom">
           <Skills />
         </div>
         

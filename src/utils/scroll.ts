@@ -9,7 +9,23 @@ export const setupScrollAnimation = () => {
   const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('active');
+        // Add different animation classes based on data attribute
+        const element = entry.target;
+        const animationType = element.getAttribute('data-animation') || 'fade';
+        
+        switch(animationType) {
+          case 'slide-right':
+            element.classList.add('active-slide-right');
+            break;
+          case 'slide-left':
+            element.classList.add('active-slide-left');
+            break;
+          case 'zoom':
+            element.classList.add('active-zoom');
+            break;
+          default:
+            element.classList.add('active');
+        }
       }
     });
   };

@@ -1,7 +1,6 @@
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,4 +38,42 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Custom background patterns */
+.dot-pattern {
+  background-image: radial-gradient(#3b82f6 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+}
+
+/* Hero section background */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.1) 100%);
+}
+
+/* Custom shape dividers */
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+}
+
+.wave-divider .shape-fill {
+  fill: #FFFFFF;
 }

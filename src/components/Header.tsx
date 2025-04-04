@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code, Terminal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -33,15 +33,21 @@ const Header = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 dark:bg-tech-dark/90 shadow-md backdrop-blur-sm py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/80 dark:bg-tech-dark/80 shadow-md backdrop-blur-md py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container flex items-center justify-between">
         <div className="text-2xl font-bold">
-          <a href="#home" className="group">
-            <span className="text-foreground">Dev</span>
-            <span className="text-tech-blue">Folio</span>
-            <span className="text-tech-blue">.</span>
+          <a href="#home" className="group flex items-center">
+            <div className="mr-2 relative">
+              <Terminal size={28} className="text-primary group-hover:text-accent transition-colors" />
+              <Code size={16} className="absolute -bottom-1 -right-1 text-accent group-hover:text-primary transition-colors" />
+            </div>
+            <div>
+              <span className="text-foreground font-poppins">Dev</span>
+              <span className="text-accent font-poppins">Folio</span>
+              <span className="text-primary">.</span>
+            </div>
           </a>
         </div>
 
@@ -52,7 +58,7 @@ const Header = () => {
               <li key={link.name}>
                 <a 
                   href={link.href}
-                  className="font-medium text-muted-foreground hover:text-tech-blue transition-colors"
+                  className="font-medium hover-underline text-muted-foreground hover:text-accent transition-colors py-2"
                 >
                   {link.name}
                 </a>
@@ -65,7 +71,7 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="md:hidden"
+          className="md:hidden hover:bg-accent/10 hover:text-accent"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -74,14 +80,14 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-background/95 dark:bg-tech-dark/95 backdrop-blur-sm">
+        <div className="md:hidden bg-background/95 dark:bg-tech-dark/95 backdrop-blur-md border-t border-accent/10 animate-fade-in">
           <nav className="container py-6">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href}
-                    className="block font-medium text-lg py-2 text-muted-foreground hover:text-tech-blue transition-colors"
+                    className="block font-medium text-lg py-2 text-muted-foreground hover:text-accent transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
