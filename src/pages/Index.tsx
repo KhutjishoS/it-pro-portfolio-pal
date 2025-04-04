@@ -6,6 +6,7 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
+import DocumentUpload from '@/components/DocumentUpload';
 import Footer from '@/components/Footer';
 import { setupScrollAnimation } from '@/utils/scroll';
 
@@ -51,6 +52,10 @@ const Index = () => {
         
         <div className="reveal">
           <Skills />
+        </div>
+        
+        <div className="reveal">
+          <DocumentUpload />
         </div>
         
         <div className="reveal">
