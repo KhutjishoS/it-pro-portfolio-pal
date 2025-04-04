@@ -122,6 +122,10 @@
   @apply animate-zoom-in;
 }
 
+.reveal.active-fade-up {
+  @apply animate-fade-up;
+}
+
 /* Glass effect */
 .glass {
   @apply backdrop-blur-lg bg-white/10 border border-white/20;
@@ -135,7 +139,7 @@
   @apply transform -translate-y-1 shadow-2xl border-accent/30;
 }
 
-/* New hover effect for links */
+/* Hover effects for links */
 .hover-underline {
   @apply relative;
 }
@@ -177,6 +181,17 @@
   }
 }
 
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slide-in-right {
   0% {
     opacity: 0;
@@ -210,9 +225,51 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
 @layer utilities {
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
   }
   
   .animate-slide-in-right {
@@ -226,4 +283,62 @@
   .animate-zoom-in {
     animation: zoom-in 0.6s ease-out forwards;
   }
+  
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  .animate-pulse-gentle {
+    animation: pulse-gentle 3s ease-in-out infinite;
+  }
+  
+  .animate-rotation {
+    animation: rotation 8s linear infinite;
+  }
+  
+  .animate-background-pan {
+    animation: background-pan 3s linear infinite;
+  }
+  
+  .text-gradient-animation {
+    background-size: 200%;
+    background-position: -100%;
+    animation: background-pan 3s linear infinite;
+  }
+}
+
+/* Advanced card hover effects */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Frosted glass effect */
+.frosted {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #2563eb, #7c3aed);
 }

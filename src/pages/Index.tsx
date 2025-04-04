@@ -12,7 +12,7 @@ import { setupScrollAnimation } from '@/utils/scroll';
 const Index = () => {
   useEffect(() => {
     // Apply animation effect on scroll
-    setupScrollAnimation();
+    const cleanup = setupScrollAnimation();
     
     // Scroll to top on initial load
     window.scrollTo(0, 0);
@@ -32,28 +32,32 @@ const Index = () => {
         }
       });
     });
+    
+    return cleanup;
   }, []);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-hidden">
+      <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background pointer-events-none"></div>
+      
       <Header />
       
       <main>
         <Hero />
         
-        <div className="reveal" data-animation="slide-right">
+        <div className="reveal" data-animation="slide-right" data-delay="200">
           <About />
         </div>
         
-        <div className="reveal" data-animation="slide-left">
+        <div className="reveal" data-animation="slide-left" data-delay="200">
           <Projects />
         </div>
         
-        <div className="reveal" data-animation="zoom">
+        <div className="reveal" data-animation="fade-up" data-delay="200">
           <Skills />
         </div>
         
-        <div className="reveal">
+        <div className="reveal" data-animation="zoom" data-delay="200">
           <Contact />
         </div>
       </main>
